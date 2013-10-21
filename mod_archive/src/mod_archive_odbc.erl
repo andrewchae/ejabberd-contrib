@@ -1821,6 +1821,7 @@ collection_to_xml(C) ->
     ExtraXML = if ExtraNonEmpty == true -> [decode_extra(C#archive_collection.extra)]; true -> [] end,
     {xmlelement, "chat",
      lists:append([
+		   [{"xmlns", ?NS_ARCHIVE}],
 		   [{"with", jlib:jid_to_string(C#archive_collection.jid)}],
 		   [{"start", get_datetime_string_from_seconds(C#archive_collection.utc)}],
 		   if C#archive_collection.subject /= "",
